@@ -15,6 +15,21 @@ export default function TextForm(props) {
     setText(newText1);
   };
 
+  const handleCapitalizedClick = () => {
+    console.log("handle handleCapitalizedClick button clicked");
+    let newText2 = text
+      .split(" ")
+      .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
+      .join(" ");
+    setText(newText2);
+  };
+
+  const handleCLRClick = () => {
+    console.log("handle handleCLRClick button clicked");
+    let newText3 = "";
+    setText(newText3);
+  };
+
   const handleOnChange = (event) => {
     console.log("handle on change clicked");
     setText(event.target.value);
@@ -39,6 +54,15 @@ export default function TextForm(props) {
         </button>
         <button className="btn btn-success mx-1" onClick={handleLoClick}>
           Convert to Lowercase
+        </button>
+        <button
+          className="btn btn-warning mx-1"
+          onClick={handleCapitalizedClick}
+        >
+          Convert to Capitalized
+        </button>
+        <button className="btn btn-danger mx-1" onClick={handleCLRClick}>
+          Clear Text
         </button>
       </div>
       <div className="container my-3">

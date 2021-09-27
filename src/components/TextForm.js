@@ -7,12 +7,14 @@ export default function TextForm(props) {
     console.log("handle up button clicked");
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Text is converted to upper case", "success");
   };
 
   const handleLoClick = () => {
     console.log("handle lo button clicked");
     let newText1 = text.toLowerCase();
     setText(newText1);
+    props.showAlert("Text is converted to lower case", "success");
   };
 
   const handleCapitalizedClick = () => {
@@ -28,6 +30,21 @@ export default function TextForm(props) {
     console.log("handle handleCLRClick button clicked");
     let newText3 = "";
     setText(newText3);
+    props.showAlert("Text is cleared", "success");
+  };
+
+  const handleCopy = () => {
+    console.log("handle handleCopy button clicked");
+    var text = document.getElementById("myBox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+    props.showAlert("Text has been copied.", "success");
+  };
+
+  const handleExtraSpaces = () => {
+    var newText4 = text.split(/[ ]+/);
+    setText(newText4.join(" "));
+    props.showAlert("Extra spaces are removed from text.", "success");
   };
 
   const handleOnChange = (event) => {
@@ -37,8 +54,11 @@ export default function TextForm(props) {
 
   return (
     <>
-      <div className="container">
-        <label htmlFor="myBox">{props.heading}</label>
+      <div
+        className="container"
+        style={{ color: props.toggleMode === "dark" ? "white" : "black" }}
+      >
+        <h3>{props.heading}</h3>
         <div className="mb-3">
           <textarea
             className="form-control"
@@ -46,6 +66,11 @@ export default function TextForm(props) {
             value={text}
             id="myBox"
             rows="20"
+            style={{
+              backgroundColor:
+                props.toggleMode === "dark" ? "#2c373f" : "white",
+              color: props.toggleMode === "dark" ? "white" : "black",
+            }}
           ></textarea>
         </div>
 
@@ -64,15 +89,24 @@ export default function TextForm(props) {
         <button className="btn btn-danger mx-1" onClick={handleCLRClick}>
           Clear Text
         </button>
+        <button className="btn btn-primary mx-1" onClick={handleCopy}>
+          Copy Text
+        </button>
+        <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>
+          Remove Extra Spaces
+        </button>
       </div>
-      <div className="container my-3">
-        <h2>My text Summary</h2>
+      <div
+        className="container my-3"
+        style={{ color: props.toggleMode === "dark" ? "white" : "black" }}
+      >
+        <h2>My Text Summary</h2>
         <p>
-          {text.length} Characters | {text.split(" ").length} Words
+          {text.length} Characters | {text.trim().replace('/\s+/gi', ' ').split(' ').length} Words
         </p>
         <p>{0.008 * text.split(" ").length} Minutes to read</p>
         <h3>Preview</h3>
-        <p>{text}</p>
+        <p>{text.length > 0 ? text : "Enter your to preview here."}</p>
       </div>
     </>
   );

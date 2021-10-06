@@ -6,29 +6,29 @@ export default function About() {
     backgroundColor: "white",
   });
 
-  const [btnStyle, setbtnStyle] = useState({
-    text: "Enable Dark Mode",
-  });
+  // const [btnStyle, setbtnStyle] = useState({
+  //   text: "Enable Dark Mode",
+  // });
 
-  const toggleEnable = () => {
-    if (myStyle.color === "black") {
-      setmyStyle({
-        color: "white",
-        backgroundColor: "black",
-      });
-      setbtnStyle({
-        text: "Enable Light Mode",
-      });
-    } else {
-      setmyStyle({
-        color: "black",
-        backgroundColor: "white",
-      });
-      setbtnStyle({
-        text: "Enable Dark Mode",
-      });
-    }
-  };
+  // const toggleEnable = () => {
+  //   if (myStyle.color === "black") {
+  //     setmyStyle({
+  //       color: "white",
+  //       backgroundColor: "black",
+  //     });
+  //     setbtnStyle({
+  //       text: "Enable Light Mode",
+  //     });
+  //   } else {
+  //     setmyStyle({
+  //       color: "black",
+  //       backgroundColor: "white",
+  //     });
+  //     setbtnStyle({
+  //       text: "Enable Dark Mode",
+  //     });
+  //   }
+  // };
 
   return (
     <>
@@ -46,7 +46,7 @@ export default function About() {
                 aria-controls="collapseOne"
                 style={myStyle}
               >
-                Accordion Item #1
+                <strong>Analyze your text</strong>
               </button>
             </h2>
             <div
@@ -79,7 +79,7 @@ export default function About() {
                 aria-controls="collapseTwo"
                 style={myStyle}
               >
-                Accordion Item #2
+                <strong>Free to use</strong>
               </button>
             </h2>
             <div
@@ -112,7 +112,7 @@ export default function About() {
                 aria-controls="collapseThree"
                 style={myStyle}
               >
-                Accordion Item #3
+                <strong>Browser Compatible</strong>
               </button>
             </h2>
             <div
@@ -135,7 +135,7 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="container my-3">
+        {/* <div className="container my-3">
           <button
             onClick={toggleEnable}
             type="button"
@@ -143,7 +143,7 @@ export default function About() {
           >
             {btnStyle.text}
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   );

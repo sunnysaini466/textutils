@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import React, { useState } from "react";
 import Alert from "./components/Alert";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -55,14 +55,12 @@ function App() {
             <Route path="/about">
               <About />
             </Route>
-
-            <Route path="/">
-              <TextForm
-                heading="My Textarea"
-                toggleMode={mode}
-                showAlert={showAlert}
-              />
-            </Route>
+            <TextForm
+              heading="Text Utils - Word Counter, Lowercase to Uppercase, Uppercase to Lowercase, Copy Text"
+              toggleMode={mode}
+              showAlert={showAlert}
+            />
+            <Route path="/"></Route>
           </Switch>
         </div>
       </Router>

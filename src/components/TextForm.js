@@ -58,7 +58,7 @@ export default function TextForm(props) {
         className="container"
         style={{ color: props.toggleMode === "dark" ? "white" : "black" }}
       >
-        <h3>{props.heading}</h3>
+        <h3 className="mb-4">{props.heading}</h3>
         <div className="mb-3">
           <textarea
             className="form-control"
@@ -74,25 +74,26 @@ export default function TextForm(props) {
           ></textarea>
         </div>
 
-        <button className="btn btn-primary mx-1" onClick={handleUpClick}>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>
           Convert to Uppercase
         </button>
-        <button className="btn btn-success mx-1" onClick={handleLoClick}>
+        <button disabled={text.length===0} className="btn btn-success mx-1 my-1" onClick={handleLoClick}>
           Convert to Lowercase
         </button>
         <button
-          className="btn btn-warning mx-1"
+        disabled={text.length===0}
+          className="btn btn-warning mx-1 my-1"
           onClick={handleCapitalizedClick}
         >
           Convert to Capitalized
         </button>
-        <button className="btn btn-danger mx-1" onClick={handleCLRClick}>
+        <button disabled={text.length===0} className="btn btn-danger mx-1 my-1" onClick={handleCLRClick}>
           Clear Text
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleCopy}>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleCopy}>
           Copy Text
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>
           Remove Extra Spaces
         </button>
       </div>
@@ -102,9 +103,9 @@ export default function TextForm(props) {
       >
         <h2>My Text Summary</h2>
         <p>
-          {text.length} Characters | {text.trim().replace('/\s+/gi', ' ').split(' ').length} Words
+          {text.split("").filter((element)=>{return element.length!==0}).length} Words 
         </p>
-        <p>{0.008 * text.split(" ").length} Minutes to read</p>
+        <p>{0.008 * text.split("").filter((element)=>{return element.length!==0}).length} Minutes to read</p>
         <h3>Preview</h3>
         <p>{text.length > 0 ? text : "Enter your to preview here."}</p>
       </div>

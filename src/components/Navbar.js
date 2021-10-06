@@ -1,12 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
+  
   Link,
-  useRouteMatch,
-  useParams,
+  
+  
 } from "react-router-dom";
 
 export default function Navbar(props) {
@@ -15,9 +13,9 @@ export default function Navbar(props) {
       className={`navbar navbar-expand-lg navbar-${props.toggleMode} bg-${props.toggleMode}`}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           {props.title}
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -40,12 +38,12 @@ export default function Navbar(props) {
               <Link className="nav-link" to="/about">
                 About
               </Link>
-            </li>
-            {/* <li className="nav-item">
+            </li> 
+             <li className="nav-item">
               <Link className="nav-link" to="/">
                 {props.contactUs}
               </Link>
-            </li> */}
+            </li>
           </ul>
           {/* <form className="d-flex">
             <input
